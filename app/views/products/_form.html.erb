@@ -1,0 +1,49 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :product_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, id: :product_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :product_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.collection_select :category_ids, Category.all, :id, :name , {:size => 5}, id: 'example', multiple: :true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $("#example").select2({
+  maximumSelectionLength: 2
+});
+</script>
+
+<style type="text/css">
+  .select2{
+    width: 200px !important;
+  }
+</style>

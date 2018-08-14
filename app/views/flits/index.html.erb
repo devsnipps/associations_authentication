@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Flits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flits.each do |flit| %>
+      <tr>
+        <td><%= flit.name %></td>
+        <td><%= link_to 'Show', flit %></td>
+        <td><%= link_to 'Edit', edit_flit_path(flit) %></td>
+        <td><%= link_to 'Destroy', flit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flit', new_flit_path %>
