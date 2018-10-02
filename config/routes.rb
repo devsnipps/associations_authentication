@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+
+  get 'contacts/create'
+
+  get 'contacts/update'
+
+  get 'contacts/destroy'
+
+  get 'contacts/edit'
+
   get 'admin' => 'admin#index'
 
   controller :sessions do
@@ -13,7 +23,10 @@ Rails.application.routes.draw do
 
   # get 'sessions/destroy'
 
-  resources :users
+  resources :users do
+    resources :emergencies, controller: :contacts, type: "Emergency"
+    resources :friends, controller: :contacts, type: "Friend"
+  end
   resources :destinations
   resources :flits
   resources :categories

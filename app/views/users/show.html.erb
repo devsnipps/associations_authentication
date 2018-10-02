@@ -12,3 +12,19 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<h3>Emergency contacts</h3>
+
+<%= link_to 'New', new_user_emergency_path(@user) %>
+<% @user.emergencies.each do |c| %>
+	<p><%= c.name %>  &emsp; <%= link_to 'Delete', [@user, c], method: :delete %></p>
+<% end %>
+
+<br><br>
+<h3>Freind contacts</h3>
+
+<%= link_to 'New', new_user_friend_path(@user) %>
+
+<% @user.friends.each do |c| %>
+	<p><%= c.name %>  &emsp; <%= link_to 'Delete', [@user, c], method: :delete %></p>
+<% end %>
